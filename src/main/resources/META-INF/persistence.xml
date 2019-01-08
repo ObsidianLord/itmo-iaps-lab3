@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             xmlns="http://java.sun.com/xml/ns/persistence"
+             version="2.0">
+<persistence-unit name="oracle" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+        <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+        <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orbis"/>
+        <property name="javax.persistence.jdbc.user" value="s242558"/>
+        <property name="javax.persistence.jdbc.password" value=""/>
+        <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
+        <property name="eclipselink.ddl-generation.output-mode" value="database" />
+        <property name="eclipselink.logging.level" value="FINE" />
+    </properties>
+</persistence-unit>
+</persistence>
+

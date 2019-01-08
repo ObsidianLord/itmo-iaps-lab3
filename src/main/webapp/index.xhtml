@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Главная</title>
+    <h:outputStylesheet library="css" name="styles.css"/>
+</h:head>
+<h:body styleClass="index">
+
+    <div class="border shadow hl header">
+        <p>Лебеденко Глеб Сергеевич</p>
+        <p>Гринштерн Вячеслав Эдуардович</p>
+        <p>Группа P3201</p>
+        <p>Вариант 18140</p>
+    </div>
+
+    <div id="clock" class="border shadow hl main"></div>
+    <h:outputScript library="js" name="clock.js" />
+
+    <div class="border shadow hl main">
+        <h:link id="link" outcome="faces/check" value="Перейти к вводу значений"/>
+    </div>
+</h:body>
+</html>

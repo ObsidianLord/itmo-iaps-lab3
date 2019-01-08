@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <title>Лабораторная №3</title>
+    <h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body styleClass="main">
+
+    <div class="column left">
+
+        <div class="border shadow hl header">
+            <p>Лебеденко Глеб Сергеевич</p>
+            <p>Гринштерн Вячеслав Эдуардович</p>
+            <p>Группа P3201</p>
+            <p>Вариант 18140</p>
+        </div>
+
+        <h:form id="form">
+
+            <div class="border shadow hl">
+
+                <div id="xDiv">
+                    <span id="xSpan">X:</span>
+                    <h:selectBooleanCheckbox styleClass="cb" id="xCheck-5" name="x-5" value="false" onclick="resetOther(this);"/>
+                    <h:outputLabel for="xCheck-5"><span></span>-5</h:outputLabel>
+                    <h:selectBooleanCheckbox styleClass="cb" id="xCheck-4" name="x-4" value="false" onclick="resetOther(this);"/>
+                    <h:outputLabel for="xCheck-4"><span></span>-4</h:outputLabel>
+                    <h:selectBooleanCheckbox styleClass="cb" id="xCheck-3" name="x-3" value="false" onclick="resetOther(this);"/>
+                    <h:outputLabel for="xCheck-3"><span></span>-3</h:outputLabel>
+                    <h:selectBooleanCheckbox styleClass="cb" id="xCheck-2" name="x-2" value="false" onclick="resetOther(this);"/>
+                    <h:outputLabel for="xCheck-2"><span></span>-2</h:outputLabel>
+                    <h:selectBooleanCheckbox styleClass="cb" id="xCheck-1" name="x-1" value="false" onclick="resetOther(this);"/>
+                    <h:outputLabel for="xCheck-1"><span></span>-1</h:outputLabel>
+                    <h:selectBooleanCheckbox styleClass="cb" id="xCheck0" name="x0" value="false" onclick="resetOther(this);"/>
+                    <h:outputLabel for="xCheck0"><span></span>0</h:outputLabel>
+                    <h:selectBooleanCheckbox styleClass="cb" id="xCheck1" name="x1" value="false" onclick="resetOther(this);"/>
+                    <h:outputLabel for="xCheck1"><span></span>1</h:outputLabel>
+                </div>
+                <h:inputHidden id="hiddenX" value="#{result.x}" />
+
+                <div id="yrDiv">
+                    <h:outputLabel for="yText">Y:</h:outputLabel>
+                    <h:inputText styleClass="text" id="yText" value="#{result.y}">
+                        <f:converter converterId="textConverter"/>
+                    </h:inputText>
+                    <h:outputLabel for="rText">R:</h:outputLabel>
+                    <h:inputText styleClass="text" id="rText" value="#{result.r}">
+                        <f:converter converterId="textConverter"/>
+                    </h:inputText>
+                </div>
+
+                <h:commandButton id="sendButton" action="#{result.check}" value="Отправить">
+                    <f:ajax execute="form" event="click" onevent="validate" render="form" />
+                </h:commandButton>
+            </div>
+
+            <div class="border shadow hl previous-checks">
+                <div class="title">Результаты прошлых проверок</div>
+                <table id="history_table">
+                    <tr>
+                        <th>Дата и время проверки</th>
+                        <th>Координата X</th>
+                        <th>Координата Y</th>
+                        <th>Радиус</th>
+                        <th>Результат</th>
+                    </tr>
+                    <ui:repeat value="#{history.history}" var="value">
+                        <tr class="${value.correct == 1 ? 'good-row' : 'bad-row'}">
+                            <td>
+                                <h:outputText value="#{value.date}">
+                                    <f:convertDateTime type="date" pattern="dd.MM.yyyy HH:mm:ss"/>
+                                </h:outputText>
+                            </td>
+                            <td class="x">
+                                #{value.x}
+                            </td>
+                            <td class="y">
+                                #{value.y}
+                            </td>
+                            <td>
+                                #{value.r}
+                            </td>
+                            <td class="c">
+                                ${value.correct == 1 ? "Попадание" : "Промах"}
+                            </td>
+                        </tr>
+                    </ui:repeat>
+                </table>
+            </div>
+        </h:form>
+
+        <div class="main">
+            <h:link id="link" outcome="index" value="Вернуться на главную"/>
+        </div>
+    </div>
+
+    <div class="column right">
+        <canvas class='shadow main' width="800" height="600" id="canvas" title="Область"></canvas>
+    </div>
+
+    <h:outputScript library="js" name="area.js" />
+    <h:outputScript library="js" name="validate.js" />
+</h:body>
+</html>

@@ -1,0 +1,1 @@
+create table results(id number primary key, session_id varchar2(100), x number(16,15), y number(16,15), r number(16,15), correct number(1), result_date timestamp);
