@@ -19,7 +19,6 @@ public class EclipseService implements ResultService {
 
     public EclipseService() {}
 
-    @Override
     public EntityManager getEntityManager() {
         return entityManager;
     }

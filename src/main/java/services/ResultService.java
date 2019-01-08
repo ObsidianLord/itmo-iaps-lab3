@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface ResultService {
     List getAllResults();
-    EntityManager getEntityManager();
     void save(Result result);
     void clean();
 }

@@ -1,1 +1,208 @@
-body{background:url(/resources/img/pattern.png);font-family:courier sans-serif;color:#f5f5f5;max-width:1280px;margin:auto}.result{max-width:400px}#results{margin-top:2em;margin-bottom:2em}*{box-sizing:border-box}#canvas,#results,.header{text-align:center}.header p{margin-top:.07em;margin-bottom:.07em}.index,.main{margin-top:1em}.main{text-align:center}.index{max-width:420px}.column{float:left;padding:10px}.left{width:35%}.right{width:65%}a:link{color:rgba(255,165,32,.98)}a:hover{color:#fff}a:active,a:visited,a:visited:hover{color:rgba(255,165,32,.98)}form{margin-top:30px}#canvas{display:block;margin:auto}input[type=checkbox]{display:none}input[type=checkbox]+label span{background-color:#000;width:10px;height:10px;display:inline-block;vertical-align:middle;box-shadow:0 0 2px 2px rgba(255,165,32,.98);margin:-2px 5px 0 0;cursor:pointer}input[type=checkbox]+label{margin-right:.8em}label[for="form:xCheck1"]{margin-right:0!important}input[type=checkbox]:checked+label span{box-shadow:0 0 2px 2px rgba(255,165,32,.98);background-color:rgba(255,165,32,.98)}label{font-family:comic-sans sans-serif}label[for='form:rText']{margin-left:1em}.text,input[type=submit]{background-color:rgba(255,165,32,.98);font-weight:bolder;border-style:solid;border-color:#000;border-radius:2px}input[type=submit]{height:30px;font-color:black;width:25%}#form\:sendButton{margin-bottom:.8em}.text:hover,input[type=submit]:hover{box-shadow:0 0 4px 3px rgba(255,165,32,.98)}#xSpan{margin-right:1em}#xDiv{margin:.8em auto auto}.text{margin-top:.8em;margin-left:.4em;margin-bottom:1em;width:3em}#history_table{font-size:8pt}table{border-collapse:collapse;margin-left:auto;margin-right:auto}table,td,th{border:1px solid rgba(255,165,32,.98)}.title{margin-top:.5em;margin-bottom:.5em}.hl:hover{background-color:rgba(0,0,0,.78);box-shadow:0 0 5px 4px rgba(255,165,32,.98)}.border{padding:.3em;border-radius:4px;background-color:rgba(0,0,0,.39)}.previous-checks{font-family:sans-serif;text-align:center;margin-top:2em;margin-bottom:2em;max-height:310px;overflow:auto}.good-row{color:rgba(46,169,22,.86)}.bad-row{color:#ff2f00}.shadow{box-shadow:0 0 4px 3px rgba(255,165,32,.98)}
+body {
+    background: url(/resources/img/pattern.png);
+    font-family: courier sans-serif;
+    color: #f5f5f5;
+    max-width: 1280px;
+    margin: auto
+}
+
+.result {
+    max-width: 400px
+}
+
+#results {
+    margin-top: 2em;
+    margin-bottom: 2em
+}
+
+* {
+    box-sizing: border-box
+}
+
+#canvas,
+#results,
+.header {
+    text-align: center
+}
+
+.header p {
+    margin-top: .07em;
+    margin-bottom: .07em
+}
+
+.index,
+.main {
+    margin-top: 1em
+}
+
+.main {
+    text-align: center
+}
+
+.index {
+    max-width: 420px
+}
+
+.column {
+    float: left;
+    padding: 10px
+}
+
+.left {
+    width: 35%
+}
+
+.right {
+    width: 65%
+}
+
+a:link {
+    color: rgba(255, 165, 32, .98)
+}
+
+a:hover {
+    color: #fff
+}
+
+a:active,
+a:visited,
+a:visited:hover {
+    color: rgba(255, 165, 32, .98)
+}
+
+form {
+    margin-top: 30px
+}
+
+#canvas {
+    display: block;
+    margin: auto
+}
+
+input[type=checkbox] {
+    display: none
+}
+
+input[type=checkbox]+label span {
+    background-color: #000;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    box-shadow: 0 0 2px 2px rgba(255, 165, 32, .98);
+    margin: -2px 5px 0 0;
+    cursor: pointer
+}
+
+input[type=checkbox]+label {
+    margin-right: .8em
+}
+
+label[for="form:xCheck1"] {
+    margin-right: 0!important
+}
+
+input[type=checkbox]:checked+label span {
+    box-shadow: 0 0 2px 2px rgba(255, 165, 32, .98);
+    background-color: rgba(255, 165, 32, .98)
+}
+
+label {
+    font-family: comic-sans sans-serif
+}
+
+label[for='form:rText'] {
+    margin-left: 1em
+}
+
+.text,
+input[type=submit] {
+    background-color: rgba(255, 165, 32, .98);
+    font-weight: bolder;
+    border-style: solid;
+    border-color: #000;
+    border-radius: 2px
+}
+
+input[type=submit] {
+    height: 30px;
+    font-color: black;
+    width: 25%
+}
+
+#form\:sendButton {
+    margin-bottom: .8em
+}
+
+.text:hover,
+input[type=submit]:hover {
+    box-shadow: 0 0 4px 3px rgba(255, 165, 32, .98)
+}
+
+#xSpan {
+    margin-right: 1em
+}
+
+#xDiv {
+    margin: .8em auto auto
+}
+
+.text {
+    margin-top: .8em;
+    margin-left: .4em;
+    margin-bottom: 1em;
+    width: 3em
+}
+
+#history_table {
+    font-size: 8pt
+}
+
+table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto
+}
+
+table,
+td,
+th {
+    border: 1px solid rgba(255, 165, 32, .98)
+}
+
+.title {
+    margin-top: .5em;
+    margin-bottom: .5em
+}
+
+.hl:hover {
+    background-color: rgba(0, 0, 0, .78);
+    box-shadow: 0 0 5px 4px rgba(255, 165, 32, .98)
+}
+
+.border {
+    padding: .3em;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .39)
+}
+
+.previous-checks {
+    font-family: sans-serif;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    max-height: 310px;
+    overflow: auto
+}
+
+.good-row {
+    color: rgba(46, 169, 22, .86)
+}
+
+.bad-row {
+    color: #ff2f00
+}
+
+.shadow {
+    box-shadow: 0 0 4px 3px rgba(255, 165, 32, .98)
+}
