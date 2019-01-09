@@ -1,4 +1,4 @@
-var radius = 250;
+let radius = 250;
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const width = canvas.width;
@@ -6,35 +6,28 @@ const height = canvas.height;
 const scale = 50;
 
 function draw() {
-
     ctx.clearRect(0, 0, width, height);
-
     ctx.beginPath();
     ctx.arc(width / 2, height / 2, radius / 2, 90 * Math.PI / 180, 180 * Math.PI / 180, false);
     ctx.fillStyle = '#FFA520';
     ctx.fill();
-
     ctx.moveTo(width / 2, height / 2 + radius / 2);
     ctx.lineTo(width / 2 - radius / 2, height / 2);
     ctx.lineTo(width / 2, height / 2);
     ctx.fill();
-
     ctx.beginPath();
     ctx.moveTo(width / 2, height / 2 - radius / 2);
     ctx.lineTo(width / 2 + radius / 2, height / 2);
     ctx.lineTo(width / 2, height / 2);
     ctx.fill();
-
     ctx.beginPath();
     ctx.moveTo(width / 2, height / 2 - radius / 2);
     ctx.lineTo(width / 2 - radius, height / 2 - radius / 2);
     ctx.lineTo(width / 2 - radius, height / 2);
     ctx.lineTo(width / 2, height / 2);
     ctx.fill();
-
     ctx.strokeStyle = '#000';
     ctx.stroke();
-
     ctx.beginPath();
     ctx.moveTo(0, height / 2);
     ctx.lineTo(width, height / 2);
@@ -44,7 +37,6 @@ function draw() {
     ctx.moveTo(width / 2, 0);
     ctx.lineTo(width / 2, height);
     ctx.stroke();
-
     ctx.fillStyle = '#FFF';
 }
 
@@ -78,12 +70,27 @@ function drawRect() {
     ctx.fill();
 }
 
+function historyDots() {
+    const x = document.querySelectorAll('td.x');
+    const y = document.querySelectorAll('td.y');
+    const c = document.querySelectorAll('td.c');
+    for (let i = 0; i < x.length; i++) {
+        ctx.beginPath();
+        let valueOfX = parseFloat(x[i].innerText);
+        let valueOfY = parseFloat(y[i].innerText);
+        let isCorrect = c[i].innerText.toString();
+        ctx.arc(valueOfX * scale + width / 2, height / 2 - valueOfY * scale, 3, 0, Math.PI * 2);
+        isCorrect.startsWith("Попадание") ? ctx.fillStyle = '#0F0' : ctx.fillStyle = '#F00';
+        ctx.fill();
+    }
+}
+
 canvas.addEventListener('click', function (event) {
     const MP = getMP(canvas, event);
     selectedDot = null;
     if ((MP.x - width / 2)/scale >= -5 && (MP.x - width / 2)/scale <= 1 && (-MP.y + height / 2)/scale >= -3 && (-MP.y + height / 2)/scale <= 3) {
         draw();
-        drawRect()
+        drawRect();
         historyDots();
         ctx.beginPath();
         ctx.arc(MP.x, MP.y, 3, 0, Math.PI * 2);
@@ -107,7 +114,7 @@ canvas.addEventListener('click', function (event) {
         document.getElementById('form:sendButton').click();
     } else {
         draw();
-        drawRect()
+        drawRect();
         historyDots();
         isIncorrect = true;
         ctx.font = "20px Helvetica";
@@ -123,7 +130,7 @@ canvas.addEventListener('click', function (event) {
 canvas.addEventListener('mousemove', function (event) {
     const MP = getMP(canvas, event);
     draw();
-    drawRect()
+    drawRect();
     historyDots();
     lastDot();
     ctx.beginPath();
@@ -138,23 +145,7 @@ canvas.addEventListener('mousemove', function (event) {
     }
 });
 
-
-function historyDots() {
-    const x = document.querySelectorAll('td.x');
-    const y = document.querySelectorAll('td.y');
-    const c = document.querySelectorAll('td.c');
-    for (let i = 0; i < x.length; i++) {
-        ctx.beginPath();
-        let valueOfX = parseFloat(x[i].innerText);
-        let valueOfY = parseFloat(y[i].innerText);
-        let isCorrect = c[i].innerText.toString();
-        ctx.arc(valueOfX * scale + width / 2, height / 2 - valueOfY * scale, 3, 0, Math.PI * 2);
-        isCorrect.startsWith("Попадание") ? ctx.fillStyle = '#0F0' : ctx.fillStyle = '#F00';
-        ctx.fill();
-    }
-}
-
 draw();
-drawRect()
+drawRect();
 historyDots();
 lastDot();

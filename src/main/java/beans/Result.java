@@ -43,7 +43,7 @@ public class Result {
 
     public Result() {r = 5.0;}
 
-    public Result(@NotNull String session, @NotNull double x, @NotNull double y, @NotNull double r, @NotNull Date date, @NotNull int correct) {
+    public Result(@NotNull String session_id, @NotNull double x, @NotNull double y, @NotNull double r, @NotNull Date date, @NotNull int correct) {
         this.session_id = session_id;
         this.x = x;
         this.y = y;
@@ -92,12 +92,12 @@ public class Result {
         this.r = r;
     }
 
-    public Date getDate() {
+    public Date getResult_date() {
         return result_date;
     }
 
-    public void setDate(Date date) {
-        this.result_date = date;
+    public void setResult_date(Date result_date) {
+        this.result_date = result_date;
     }
 
     public int getCorrect() {

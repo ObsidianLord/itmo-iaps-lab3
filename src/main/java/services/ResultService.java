@@ -2,7 +2,6 @@ package services;
 
 import beans.Result;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 public interface ResultService {

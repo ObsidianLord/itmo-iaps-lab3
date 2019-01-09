@@ -28,7 +28,7 @@ public class History implements Serializable {
 
     public List<Result> getHistory() {
         List<Result> results = service.getAllResults();
-        results.sort(Comparator.comparing(Result::getDate).reversed());
+        results.sort(Comparator.comparing(Result::getResult_date).reversed());
         return results;
     }
 }

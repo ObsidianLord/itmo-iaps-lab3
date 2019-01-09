@@ -38,7 +38,7 @@ public class EclipseService implements ResultService {
     @Override
     public List<Result> getAllResults() {
         try {
-            Query query = entityManager.createQuery("SELECT result FROM Result result WHERE result.session_id = :session");
+            Query query = entityManager.createQuery("SELECT result FROM Result result WHERE result.session_id LIKE :session");
             query.setParameter("session", FacesContext.getCurrentInstance().getExternalContext().getSessionId(false));
             return query.getResultList();
         } catch (Exception e) {
